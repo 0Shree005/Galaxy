@@ -68,6 +68,14 @@ parameters.screenshotButton = () => {
     takeScreenshot();
 };
 
+parameters.radiusMultiplier = 1
+parameters.branchMultiplier = 1
+parameters.spinMultiplier = 1
+
+parameters.angle = null;
+parameters.angleX = 'sin';
+parameters.angleZ = 'cos';
+
 
 /**
  * Variables
@@ -99,6 +107,53 @@ const generateGalaxy = () =>
     const colorinside = new THREE.Color(parameters.insideColor)
     const coloroutside = new THREE.Color(parameters.outsideColor)
     
+    const angle =   parameters.angle === null ? (val) => val :
+                    parameters.angle === 'sin' ? Math.sin :
+                    parameters.angle === 'cos' ? Math.cos :
+                    parameters.angle === 'tan' ? Math.tan :
+                    parameters.angle === 'sec' ? (angle) => 1 / Math.cos(angle) :
+                    parameters.angle === 'csc' ? (angle) => 1 / Math.sin(angle) :
+                    parameters.angle === 'cot' ? (angle) => 1 / Math.tan(angle) :
+                    parameters.angle === 'sinh' ? Math.sinh :
+                    parameters.angle === 'cosh' ? Math.cosh :
+                    parameters.angle === 'tanh' ? Math.tanh :
+                    parameters.angle === 'sech' ? (angle) => 1 / Math.cosh(angle) :
+                    parameters.angle === 'csch' ? (angle) => 1 / Math.sinh(angle) :
+                    parameters.angle === 'coth' ? (angle) => 1 / Math.tanh(angle) :
+                    parameters.angle;
+    
+    
+    const angleX =  parameters.angleX === 'sin' ? Math.sin : 
+                    parameters.angleX === 'cos' ? Math.cos : 
+                    parameters.angleX === 'tan' ? Math.tan :
+                    parameters.angleX === 'sec' ? (angle) => 1 / Math.cos(angle) :
+                    parameters.angleX === 'csc' ? (angle) => 1 / Math.sin(angle) :
+                    parameters.angleX === 'cot' ? (angle) => 1 / Math.tan(angle) :
+                    parameters.angleX === 'sinh' ? Math.sinh : 
+                    parameters.angleX === 'cosh' ? Math.cosh : 
+                    parameters.angleX === 'tanh' ? Math.tanh :
+                    parameters.angleX === 'sech' ? (angle) => 1 / Math.cosh(angle) :
+                    parameters.angleX === 'csch' ? (angle) => 1 / Math.sinh(angle) :
+                    parameters.angleX === 'coth' ? (angle) => 1 / Math.tanh(angle) :
+                    parameters.angleX;
+
+    
+    const angleZ =  parameters.angleZ === 'sin' ? Math.sin : 
+                    parameters.angleZ === 'cos' ? Math.cos : 
+                    parameters.angleZ === 'tan' ? Math.tan :
+                    parameters.angleZ === 'sec' ? (angle) => 1 / Math.cos(angle) :
+                    parameters.angleZ === 'csc' ? (angle) => 1 / Math.sin(angle) :
+                    parameters.angleZ === 'cot' ? (angle) => 1 / Math.tan(angle) :
+                    parameters.angleZ === 'sinh' ? Math.sinh : 
+                    parameters.angleZ === 'cosh' ? Math.cosh : 
+                    parameters.angleZ === 'tanh' ? Math.tanh :
+                    parameters.angleZ === 'sech' ? (angle) => 1 / Math.cosh(angle) :
+                    parameters.angleZ === 'csch' ? (angle) => 1 / Math.sinh(angle) :
+                    parameters.angleZ === 'coth' ? (angle) => 1 / Math.tanh(angle) :
+                    parameters.angleZ;
+
+
+
     for(let i = 0; i < parameters.count; i++)
     {
         // Position
@@ -106,45 +161,70 @@ const generateGalaxy = () =>
 
         // const radius = 0.5 / (Math.random() * parameters.radius) - 0.5
 
-        const radius =  Math.random() * parameters.radius
+        const radius = angle(Math.random() * parameters.radius)
+        const spinAngle = angle(radius * parameters.spin)
+        const branchAngle = angle((i % parameters.branches) / parameters.branches * Math.PI * 2 ) 
 
-        const spinAngle = (radius * parameters.spin)
-        const branchAngle = ((i % parameters.branches) / parameters.branches * Math.PI * 2 ) 
+        const radiusMultiplier =    parameters.radiusMultiplier === 'sin' ? Math.sin :
+                                    parameters.radiusMultiplier === 'cos' ? Math.cos :
+                                    parameters.radiusMultiplier === 'tan' ? Math.tan :
+                                    parameters.radiusMultiplier === 'sec' ? (angle) => 1 / Math.cos(angle) :
+                                    parameters.radiusMultiplier === 'csc' ? (angle) => 1 / Math.sin(angle) :
+                                    parameters.radiusMultiplier === 'cot' ? (angle) => 1 / Math.tan(angle) :
+                                    parameters.radiusMultiplier === 'sinh' ? Math.sinh : 
+                                    parameters.radiusMultiplier === 'cosh' ? Math.cosh : 
+                                    parameters.radiusMultiplier === 'tanh' ? Math.tanh :
+                                    parameters.radiusMultiplier === 'sech' ? (angle) => 1 / Math.cosh(angle) :
+                                    parameters.radiusMultiplier === 'csch' ? (angle) => 1 / Math.sinh(angle) :
+                                    parameters.radiusMultiplier === 'coth' ? (angle) => 1 / Math.tanh(angle) :
+                                    (val) => val;
 
-        const randomX = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : - 1) * parameters.randomness * radius
-        const randomY = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : - 1) * parameters.randomness * radius
-        const randomZ = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : - 1) * parameters.randomness * radius
+        const spinMultiplier  =     parameters.spinMultiplier === 'sin' ? Math.sin :
+                                    parameters.spinMultiplier === 'cos' ? Math.cos :
+                                    parameters.spinMultiplier === 'tan' ? Math.tan :
+                                    parameters.spinMultiplier === 'sec' ? (angle) => 1 / Math.cos(angle) :
+                                    parameters.spinMultiplier === 'csc' ? (angle) => 1 / Math.sin(angle) :
+                                    parameters.spinMultiplier === 'cot' ? (angle) => 1 / Math.tan(angle) :
+                                    parameters.spinMultiplier === 'sinh' ? Math.sinh : 
+                                    parameters.spinMultiplier === 'cosh' ? Math.cosh : 
+                                    parameters.spinMultiplier === 'tanh' ? Math.tanh :
+                                    parameters.spinMultiplier === 'sech' ? (angle) => 1 / Math.cosh(angle) :
+                                    parameters.spinMultiplier === 'csch' ? (angle) => 1 / Math.sinh(angle) :
+                                    parameters.spinMultiplier === 'coth' ? (angle) => 1 / Math.tanh(angle) :
+                                    (val) => val;
 
+        const branchMultiplier  =   parameters.branchMultiplier === 'sin' ? Math.sin :
+                                    parameters.branchMultiplier === 'cos' ? Math.cos :
+                                    parameters.branchMultiplier === 'tan' ? Math.tan :
+                                    parameters.branchMultiplier === 'sec' ? (angle) => 1 / Math.cos(angle) :
+                                    parameters.branchMultiplier === 'csc' ? (angle) => 1 / Math.sin(angle) :
+                                    parameters.branchMultiplier === 'cot' ? (angle) => 1 / Math.tan(angle) :
+                                    parameters.branchMultiplier === 'sinh' ? Math.sinh : 
+                                    parameters.branchMultiplier === 'cosh' ? Math.cosh : 
+                                    parameters.branchMultiplier === 'tanh' ? Math.tanh :
+                                    parameters.branchMultiplier === 'sech' ? (angle) => 1 / Math.cosh(angle) :
+                                    parameters.branchMultiplier === 'csch' ? (angle) => 1 / Math.sinh(angle) :
+                                    parameters.branchMultiplier === 'coth' ? (angle) => 1 / Math.tanh(angle) :
+                                    (val) => val;
 
-        // parameters.sin = (Math.tan(branchAngle + spinAngle) * radius + randomX) // cool earth's magnetic field effect with tan()
+        const finalRadius = radiusMultiplier(radius);
+        const finalSpinAngle = spinMultiplier(spinAngle);
+        const finalBranchAngle = branchMultiplier(branchAngle);
 
-        // parameters.sinX = Math.sin(branchAngle + spinAngle)
-        // parameters.cosX = Math.cos(branchAngle + spinAngle)
-        // parameters.tanX = Math.tan(branchAngle + spinAngle)
+        const randomX = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : - 1) * parameters.randomness * finalRadius
+        const randomY = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : - 1) * parameters.randomness * finalRadius
+        const randomZ = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : - 1) * parameters.randomness * finalRadius
 
-        // const sinXassignment = () => {
-        //     parameters.angle = Math.sin(branchAngle + spinAngle)
-        // }  
+        const posX = angleX(finalBranchAngle + finalSpinAngle);
+        const posZ = angleZ(finalBranchAngle + finalSpinAngle);
 
-        // // parameters.sixButton = () => {
-        // //     sinXassignment();
-        // // }
+        positions[i3    ] = posX * finalRadius + randomX
+        positions[i3 + 1] = randomY
+        positions[i3 + 2] = posZ * finalRadius + randomZ
 
-        // parameters.angle = () => {
-        //     sinXassignment();
-        // }
-
-
-        // // positions[i3 + 0] = (Math.sin(branchAngle + spinAngle) * radius + randomX) 
-        // // positions[i3 + 0] =  parameters.sinX * radius + randomX 
-
-        positions[i3 + 0] = (Math.sin(branchAngle + spinAngle) * radius + randomX) 
-        positions[i3 + 1] = (randomY) 
-        positions[i3 + 2] = (Math.cos(branchAngle + spinAngle) * radius + randomZ)
-    
         // Colors
         const mixedColor = colorinside.clone()
-        mixedColor.lerp(coloroutside, radius / parameters.radius) 
+        mixedColor.lerp(coloroutside, finalRadius / parameters.radius) 
 
         colors[i3 + 0] = mixedColor.r
         colors[i3 + 1] = mixedColor.g
@@ -188,8 +268,10 @@ const generateGalaxy = () =>
 const guide = gui.addFolder("Guide!")
 guide.open()
 const dimensions = gui.addFolder("Dimensions") 
-const features = gui.addFolder("Features")
-// const Angles = gui.addFolder("Angles")
+const stars = dimensions.addFolder("Stars")
+const Angles = gui.addFolder("Angles")
+const arcAngle = Angles.addFolder("Arc Angles")
+const multipliers = gui.addFolder("Multipliers")
 const random = gui.addFolder("Randomness")
 const colors = gui.addFolder("Colours")
 const animation = gui.addFolder("Animations")
@@ -202,17 +284,20 @@ guide.add(parameters, 'panel')
 guide.add(parameters, 'double')
 
 // dimensions 
-dimensions.add(parameters, 'size').min(0.001).max(0.1).step(0.001).name("size of stars").onFinishChange( generateGalaxy )
+stars.add(parameters, 'size').min(0.001).max(0.1).step(0.001).name("size of stars").onFinishChange( generateGalaxy )
+stars.add(parameters, 'count').min(1000).max(1000000).step(100).name("no. of stars").onFinishChange( generateGalaxy )
 dimensions.add(parameters, 'radius').min(0.01).max(20).step(0.001).name("radius of the galaxy").onChange( generateGalaxy )
-
-// features
-features.add(parameters, 'count').min(1000).max(1000000).step(100).name("no. of stars").onFinishChange( generateGalaxy )
-features.add(parameters, 'branches').min(2).max(20).step(1).onFinishChange( generateGalaxy )
-features.add(parameters, 'spin').min(-5).max(5).step(0.0001).name("branch spin angle").onChange( generateGalaxy )
-
+dimensions.add(parameters, 'branches').min(2).max(20).step(1).onFinishChange( generateGalaxy )
 
 // Angles 
-// Angles.add(parameters, 'sinX').onclick( generateGalaxy )
+arcAngle.add(parameters, 'angleX', ['sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("X-Axis Angle").onChange( generateGalaxy )
+arcAngle.add(parameters, 'angleZ', ['sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Z-Axis Angle").onChange( generateGalaxy )
+Angles.add(parameters, 'spin').min(-5).max(5).step(0.0001).name("branch spin angle").onChange( generateGalaxy )
+
+// Multipliers
+multipliers.add(parameters, 'radiusMultiplier', [1 , 'sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Radius Multiplier").onChange(generateGalaxy);
+multipliers.add(parameters, 'branchMultiplier', [1 , 'sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Branch Multiplier").onChange(generateGalaxy);
+multipliers.add(parameters, 'spinMultiplier', [1 , 'sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Spin Multiplier").onChange(generateGalaxy);
 
 // random
 random.add(parameters, 'randomness') .min(0) .max(2) .step(0.001).onFinishChange( generateGalaxy )
@@ -239,6 +324,8 @@ negative.add(parameters, 'NrotateZ').name("rotateZ")
 capture.add(parameters, 'screenshotButton').name("Take a picture it lasts longer!")
 
 generateGalaxy()
+
+
 /**
  * Sizes
  */
