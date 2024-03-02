@@ -4,45 +4,30 @@
 
   
 
-  
 
 ## Setup the project locally!
 
-  
+
 
 Download [Node.js](https://nodejs.org/en/download/).
 
-  
+
 
 Run this followed commands:
 
-  
-
-  
-
 ``` bash
-
-  
-
 # Install dependencies (only the first time)
-
-  
 
 1.  npm  install
 
-  
 
-  
-
-# Run the local server at localhost:8080
-
-  
+# Run the local server localhost
 
 2.  npm  run  dev
-
 ```
 
   
+# Updates 
 
 ## Update 1.2
 
