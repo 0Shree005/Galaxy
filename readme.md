@@ -27,7 +27,7 @@ Run this followed commands:
   
 
 ## Update 1.1
-```
+
 
  - Feature 1:
 			Screenshots  -  You  can  now  take  a  screenshot  of  the  page  and  save  it  on  your  local  system  in  a  single  'Click'  🤌
@@ -36,4 +36,3 @@ Run this followed commands:
 
  - Feature 2:
 			Animations  -  As  there  was  a  serious  lack  of  movement  in  a  "Galaxy,"  I  have  added  some  rotation  animations.  Now  you  can  rotate  the  Galaxy  in  whatever  axis  as  you  wish  🛐
-```
