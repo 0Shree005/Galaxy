@@ -411,7 +411,7 @@ const saveBlob = (function() {
 const takeScreenshot = () => {
     outlineEffect.render(scene, camera);
     canvas.toBlob((blob) => {
-        saveBlob(blob, `aX-${parameters.angleX},  aZ-${parameters.angleZ},  BSP-${parameters.angleZ},  RM-${parameters.radiusMultiplier},  BrM-${parameters.branchMultiplier},  SpM-${parameters.spinMultiplier}.png`);
+        saveBlob(blob, `aX~ ${parameters.angleX},  aZ~ ${parameters.angleZ},  BSP~ ${parameters.spin},  RM~ ${parameters.radiusMultiplier},  BrM~ ${parameters.branchMultiplier},  SpM~ ${parameters.spinMultiplier}.png`);
     });
 };
 
