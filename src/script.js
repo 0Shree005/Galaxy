@@ -290,14 +290,14 @@ dimensions.add(parameters, 'radius').min(0.01).max(20).step(0.001).name("radius 
 dimensions.add(parameters, 'branches').min(2).max(20).step(1).onFinishChange( generateGalaxy )
 
 // Angles 
-arcAngle.add(parameters, 'angleX', ['sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("X-Axis Angle").onChange( generateGalaxy )
-arcAngle.add(parameters, 'angleZ', ['sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Z-Axis Angle").onChange( generateGalaxy )
-Angles.add(parameters, 'spin').min(-5).max(5).step(0.0001).name("branch spin angle").onChange( generateGalaxy )
+arcAngle.add(parameters, 'angleX', ['sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("X-Axis Angle (aX)").onChange( generateGalaxy )
+arcAngle.add(parameters, 'angleZ', ['sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Z-Axis Angle (aZ)").onChange( generateGalaxy )
+Angles.add(parameters, 'spin').min(-5).max(5).step(0.0001).name("branch spin angle (BSP)").onChange( generateGalaxy )
 
 // Multipliers
-multipliers.add(parameters, 'radiusMultiplier', [1 , 'sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Radius Multiplier").onChange(generateGalaxy);
-multipliers.add(parameters, 'branchMultiplier', [1 , 'sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Branch Multiplier").onChange(generateGalaxy);
-multipliers.add(parameters, 'spinMultiplier', [1 , 'sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Spin Multiplier").onChange(generateGalaxy);
+multipliers.add(parameters, 'radiusMultiplier', [1 , 'sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Radius Multiplier (RM)").onChange(generateGalaxy);
+multipliers.add(parameters, 'branchMultiplier', [1 , 'sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Branch Multiplier (BrM)").onChange(generateGalaxy);
+multipliers.add(parameters, 'spinMultiplier', [1 , 'sin', 'cos', 'tan', 'sec', 'csc' , 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'csch' , 'coth']).name("Spin Multiplier (SpM)").onChange(generateGalaxy);
 
 // random
 random.add(parameters, 'randomness') .min(0) .max(2) .step(0.001).onFinishChange( generateGalaxy )
@@ -411,7 +411,7 @@ const saveBlob = (function() {
 const takeScreenshot = () => {
     outlineEffect.render(scene, camera);
     canvas.toBlob((blob) => {
-        saveBlob(blob, `screencapture-${canvas.width}x${canvas.height}.png`);
+        saveBlob(blob, `aX-${parameters.angleX},  aZ-${parameters.angleZ},  BSP-${parameters.angleZ},  RM-${parameters.radiusMultiplier},  BrM-${parameters.branchMultiplier},  SpM-${parameters.spinMultiplier}.png`);
     });
 };
 
