@@ -4,14 +4,17 @@
 
   
 
+  
+
+  
 
 ## Setup the project locally!
 
+  
 
+  
 
 Download [Node.js](https://nodejs.org/en/download/).
-
-
 
 Run this followed commands:
 
@@ -21,13 +24,27 @@ Run this followed commands:
 1.  npm  install
 
 
-# Run the local server localhost
+# Run the local server at localhost:8080
 
 2.  npm  run  dev
+
 ```
 
   
-# Updates 
+
+## Update 1.2.1
+
+  
+
+-  **Minor Enhancement**: Improved file naming for downloaded screenshots.
+
+  
+
+Now when you take a screenshot, the downloaded file name includes all the current parameters (aX, aZ, BSP, RM, BrM, SpM, etc.), making it easier to identify and organize your galaxy creations.
+
+  
+  
+  
 
 ## Update 1.2
 
@@ -35,9 +52,14 @@ Run this followed commands:
 
   
 
+  
+
 - Feature 1: **Customizable Trigonometric Functions for the axes** 👀
 
+  
+
 ``` Access it from the new Angles section ```
+
   
 
 You can now have the power to customize trigonometric functions for defining angles along the X and Z axes within the Galaxy Generator. Whether it's sin, cos, tan, hyperbolic sin, or other trigonometric functions, you can effortlessly experiment with different functions to create mesmerizing galaxy patterns.
@@ -48,14 +70,20 @@ You can now have the power to customize trigonometric functions for defining ang
 
   
 
+  
+
 - Feature 2: **Dynamic Multipliers** 🫨
 
+  
+
 ``` Access it from the new Multipliers section ```
+
   
 
 Introducing dynamic multipliers for radius, branch, and spin parameters! With a variety of trigonometric functions at their disposal, users can apply multipliers to these parameters, adding a layer of complexity and variability to the galaxy's structure. From sin and cos to hyperbolic tan, the possibilities for creating unique galactic landscapes are endless.
 
   
+
   
 
 ## Update 1.1
@@ -64,7 +92,11 @@ Introducing dynamic multipliers for radius, branch, and spin parameters! With a 
 
   
 
+  
+
 - Feature 1: Screenshots
+
+  
 
   
 
@@ -76,7 +108,11 @@ You can now take a screenshot of the page and save it on your local system in a 
 
   
 
+  
+
 - Feature 2: Animations
+
+  
 
   
 
