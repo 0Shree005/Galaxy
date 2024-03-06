@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'
 import gsap from 'gsap'
 import { OutlineEffect } from 'three/examples/jsm/effects/OutlineEffect.js'
-import { inject } from "@vercel/analytics/react"
+import { inject } from "@vercel/analytics"
 
 inject();
 
